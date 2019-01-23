@@ -1,6 +1,5 @@
 
 import java.util.Random;
-
 /**
  *
  * @author aaronyang
@@ -8,13 +7,15 @@ import java.util.Random;
 public class Scores implements Bag {
     
     private int[] list;
-    private int count;
+    private static int count;
     
     public Scores(){
         list = new int[50];
+        count = 0;
     }
     public Scores( int size ){
         list = new int[size];
+        count = 0;
     }
     
     @Override
@@ -30,24 +31,25 @@ public class Scores implements Bag {
         for(int i = 0; i < count; i++ ){
             list[i] = 0;
         }
+        count = 0;
     }
-    
     
     @Override
     public void add( int num ){
         
-        if(list.length<count)
+        if(list.length > count){
             list[count] = num;
-        else{
+            count++;
+        }else{
             int[] temp = new int[list.length*2];
             for( int i = 0; i < list.length; i++ ){
                 temp[i] = list[i];
             }
             list = temp;
             list[count] = num;
+            count++;
         }
     }
-    
     
     @Override
     public int getFrequencyOf( int num ){
@@ -84,13 +86,17 @@ public class Scores implements Bag {
     }
     @Override
     public void remove(){
+        
+        if(count != 0){
         Random rand = new Random();
-        int r = rand.nextInt(((list.length - 1) - 0) + 1) + 0;
-        list[r] = 0;
-        for( int i = r; i < list.length; i++ ){
+        int r = rand.nextInt(((count - 1) - 0) + 1) + 0;
+        for( int i = r; i < count; i++ ){
             list[i] = list[i+1];
         }
         count--;
+        } else {
+            throw new ArrayIndexOutOfBoundsException("the bag is empty and nothing can be removed!");
+        }
     }
     
     public int get(int i){
@@ -104,20 +110,22 @@ public class Scores implements Bag {
     @Override
     public boolean contains(int num){
         int countNum = 0;
-        for( int i = 0; i > list.length; i++ ){
+        for( int i = 0; i < list.length; i++ ){
             if( list[i] == num)
                 countNum++;
         }
         return !(countNum==0);
     }
+    
     @Override
     public String toString(){
         String str = "";
-        for( int i = 0; i > count; i++ ){
-            str += Integer.toString(list[i]);
+        for( int i = 0; i < count; i++ ){
+            str += " " + list[i];
         }
-        return getClass().getName() + "@{" + str + "}";
+        return getClass().getName() + "@{" + str + " }";
     }
+    
     @Override
     public boolean equals(Object o){
         if(!(o instanceof Scores))
@@ -130,6 +138,5 @@ public class Scores implements Bag {
             }
             return d == 0;
         }
-    }
-    
+    }  
 }

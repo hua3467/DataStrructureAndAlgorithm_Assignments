@@ -12,8 +12,9 @@ public interface Bag {
     public void clear();
     public int getFrequencyOf( int num );
     public boolean contains(int num);
+    @Override
     public String toString();
-    public boolean equals(Object o);
-            
+    @Override
+    public boolean equals(Object o);  
     
 }
