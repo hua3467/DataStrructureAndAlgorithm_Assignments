@@ -10,7 +10,7 @@ public class Client {
         
         // Create an Object of Type Scores with capacity of 100
         int size = 100;
-        Scores s = new Scores(size);
+        ArrayBag s = new ArrayBag(size);
         
         Random rand = new Random();
         

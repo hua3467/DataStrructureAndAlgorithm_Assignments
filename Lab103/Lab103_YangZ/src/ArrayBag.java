@@ -6,20 +6,20 @@ import java.util.Random;
  * @date 20190120
  * the Scores class implements all the methods in the interface Bag
  */
-public class Scores implements Bag {
+public class ArrayBag <E> implements Bag<E> {
     
     // create instance variables
-    private int[] list;         // the array list stores the data of Scores
+    private E[] list;         // the array list stores the data of Scores
     private static int count;   // count stores the number of elements of Scores
     
     // default constructor
-    public Scores(){
-        list = new int[50];
+    public ArrayBag(){
+        list = (E[])new Object[50];
         count = 0;
     }
     // overloaded constructor 
-    public Scores( int size ){
-        list = new int[size];
+    public ArrayBag( int size ){
+        list = (E[])new Object[size];
         count = 0;
     }
     // implement the getCurrentSize(), isEmpty() and clear() methods
@@ -34,34 +34,34 @@ public class Scores implements Bag {
     @Override
     public void clear(){
         for(int i = 0; i < count; i++ ){
-            list[i] = 0;
+            list[i] = null;
         }
         count = 0;
     }
     // Implement the add (int num) method 
     @Override
-    public void add( int num ){
+    public void add( E e ){
         
         if(list.length > count){
-            list[count] = num;
+            list[count] = e;
             count++;
         }else{
-            int[] temp = new int[list.length*2];
+            E[] temp = (E[]) new Object[list.length*2];
             for( int i = 0; i < list.length; i++ ){
                 temp[i] = list[i];
             }
             list = temp;
-            list[count] = num;
+            list[count] = e;
             count++;
         }
     }
     // Implement the getFrequencyOf (int num) method 
     @Override
-    public int getFrequencyOf( int num ){
-        if(contains(num)){
+    public int getFrequencyOf( E e ){
+        if(contains(e)){
             int countNum = 0;
             for( int i = 0; i < count; i++ ){
-                if( list[i] == num )
+                if( list[i] == e )
                     countNum++;
             }
             return countNum;
@@ -71,12 +71,12 @@ public class Scores implements Bag {
     }
     // Implement the remove (int num) and remove() methods
     @Override
-    public void remove( int num ){
+    public boolean remove( E e ){
         
-        if(contains(num)){
+        if(contains(e)){
             int index = 0;
             for( int i = 0; i < list.length; i++ ){
-                if( list[i] == num ){
+                if( list[i].equals(e)){
                     index = i;
                     break;
                 }
@@ -85,26 +85,29 @@ public class Scores implements Bag {
                 list[index] = list[index+1];
             }
             count--;
+            return true;
         } else {
-            throw new IllegalArgumentException("Cannot find the number!");
+            
+            return false;
         }
     }
     @Override
-    public void remove(){
+    public E remove(){
         
         if(count != 0){
-        Random rand = new Random();
-        int r = rand.nextInt(((count - 1) - 0) + 1) + 0;
-        for( int i = r; i < count; i++ ){
-            list[i] = list[i+1];
-        }
-        count--;
+            Random rand = new Random();
+            int r = rand.nextInt(((count - 1) - 0) + 1) + 0;
+            for( int i = r; i < count; i++ ){
+                list[i] = list[i+1];
+            }
+            count--;
+            return list[r];
         } else {
-            throw new ArrayIndexOutOfBoundsException("the bag is empty and nothing can be removed!");
+            return null;
         }
     }
     // create the get(int i)method that returns the value in a given index position
-    public int get(int i){
+    public E get(int i){
         if( i >= count ){
             throw new ArrayIndexOutOfBoundsException("The index number you entered is too big!");
         }else{
@@ -113,10 +116,10 @@ public class Scores implements Bag {
     }
     // Implement the contains(int num) method
     @Override
-    public boolean contains(int num){
+    public boolean contains(E e){
         int countNum = 0;
         for( int i = 0; i < list.length; i++ ){
-            if( list[i] == num)
+            if( list[i] == e)
                 countNum++;
         }
         return !(countNum==0);
@@ -133,13 +136,14 @@ public class Scores implements Bag {
     
     @Override
     public boolean equals(Object o){
-        if(!(o instanceof Scores))
+        if(!(o instanceof ArrayBag))
             return false;
         else{
-            Scores s = (Scores)o;
+            ArrayBag s = (ArrayBag)o;
             int d = 0;
             for( int i = 0; i < count; i++ ){
-                d += (this.list[i] - s.list[i]);
+                if (this.list[i] == s.list[i])
+                    d++;
             }
             return d == 0;
         }
