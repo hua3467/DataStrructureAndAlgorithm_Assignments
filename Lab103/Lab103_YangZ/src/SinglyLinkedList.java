@@ -1,8 +1,16 @@
 /**
- *
- * @author aaronyang
+ * SinglyLinkedList Class
+ * Code Fragments 3.14, 3.15
+ * from
+ * Data Structures & Algorithms, 6th edition
+ * by Michael T. Goodrich, Roberto Tamassia & Michael H. Goldwasser
+ * Wiley 2014
+ * Transcribed by
+ * @author joseph.latimer
  */
+
 public class SinglyLinkedList<E> {
+    
    // -------------nested Node class--------------
     private static class Node<E>{
         private E element;
@@ -30,7 +38,7 @@ public class SinglyLinkedList<E> {
     }
     // update methods
     public void addFirst(E e){
-        head = new Node<>(e, head);
+        head = new Node<>(e, head);     //public Node(E e, Node<E> n){ element = e; next = n;}
         if(size == 0)
             tail = head;
         size++;

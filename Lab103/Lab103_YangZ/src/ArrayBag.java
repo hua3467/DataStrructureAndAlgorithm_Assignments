@@ -66,7 +66,7 @@ public class ArrayBag <E> implements Bag<E> {
             }
             return countNum;
         }else{
-            throw new IllegalArgumentException("Cannot find the number!");
+            throw new IllegalArgumentException("Cannot find the element!");
         }
     }
     // Implement the remove (int num) and remove() methods
@@ -119,7 +119,7 @@ public class ArrayBag <E> implements Bag<E> {
     public boolean contains(E e){
         int countNum = 0;
         for( int i = 0; i < list.length; i++ ){
-            if( list[i] == e)
+            if(list[i] == e)
                 countNum++;
         }
         return !(countNum==0);
