@@ -1,6 +1,7 @@
 /**
  *
- * @author zhenhuayang
+ * @author Zhenhua Yang
+ * @date 20190201
  */
 public class Player {
     private String playerName;

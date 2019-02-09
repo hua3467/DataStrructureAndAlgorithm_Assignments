@@ -1,8 +1,8 @@
 /**
  *
  * @author Zhenhua Yang
- * @date 20190120
- * this class tests the methods in the Scores Object
+ * @date 20190201
+ * this class tests the methods in the ArrayBag Object
  */
 import java.util.Random;
 import java.util.Scanner;
