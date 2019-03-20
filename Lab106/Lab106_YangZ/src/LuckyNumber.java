@@ -7,7 +7,7 @@ import java.util.Random;
  */
 public class LuckyNumber {
     private String name;
-    private int luckyNumber;
+    int luckyNumber;
     
     /** overload constructor */
     public LuckyNumber( String n ){
@@ -22,6 +22,7 @@ public class LuckyNumber {
     public int getLuckyNumber(){
         return luckyNumber;
     }
+   
     
     public String toString(){
         return getClass().getName() + "@{ " + name + " : " + luckyNumber + "}";
