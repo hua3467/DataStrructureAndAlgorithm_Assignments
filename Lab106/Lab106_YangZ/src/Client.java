@@ -44,7 +44,6 @@ public class Client {
         while( primeListIterator.hasNext())
             System.out.println( primeListIterator.next().getElement().toString());
         System.out.println("");
-
                
     }
     public String evenOrOdd(int n){
