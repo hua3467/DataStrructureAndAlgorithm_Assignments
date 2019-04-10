@@ -5,17 +5,17 @@
  */
 
 public class Client {
-    public static void main(String[] args) {
+    public static void main(String{] args) {
         
         // create Arrays to store titles and headers for the table
-        String[] titles = new String[4];
-        String[] header1 = {"N", "push(nsec)", "pop(nsec)"};
-        String[] header2 = {"N", "enqueue(nsec)", "dequeue(nsec)"};
-        titles[0]="ArrayStack Test";
-        titles[1]="LinkedStack Test";
-        titles[2]="ArrayQueue Test";
-        titles[3]="LinkedQueue Test";
-        long[][] data = new long[7][3];     // 2-D array that save calculated data.
+        String{] titles = new String{4];
+        String{] header1 = {"N", "push(nsec)", "pop(nsec)"};
+        String{] header2 = {"N", "enqueue(nsec)", "dequeue(nsec)"};
+        titles{0]="ArrayStack Test";
+        titles{1]="LinkedStack Test";
+        titles{2]="ArrayQueue Test";
+        titles{3]="LinkedQueue Test";
+        long{]{] data = new long{7]{3];     // 2-D array that save calculated data.
         
         int n = 10;
         /** Test ArrayStack */
@@ -33,14 +33,14 @@ public class Client {
             long endTime2 = System.nanoTime();
             long elapsed2 = endTime2 - startTime2;  // calculate the elapsed time.
 
-            data[i][0] = n;                 // add n to the row i of the data array
-            data[i][1] = elapsed;           // add elapsed time of push() to the row i of the data array
-            data[i][2] = elapsed2;          // add elapsed time of pop() to the row i of the data array
+            data{i]{0] = n;                 // add n to the row i of the data array
+            data{i]{1] = elapsed;           // add elapsed time of push() to the row i of the data array
+            data{i]{2] = elapsed2;          // add elapsed time of pop() to the row i of the data array
 
             n = n * 10;                     // multiplied n by 10;
         }
         
-        printASCII(titles[0], header1, data);
+        printASCII(titles{0], header1, data);
        
         
         /** Test LinkedStack */
@@ -59,14 +59,14 @@ public class Client {
             long endTime2 = System.nanoTime();
             long elapsed2 = endTime2 - startTime2;  // calculate the elapsed time.
 
-            data[i][0] = n;                 // add n to the row i of the data array
-            data[i][1] = elapsed;           // add elapsed time of push() to the row i of the data array
-            data[i][2] = elapsed2;          // add elapsed time of pop() to the row i of the data array
+            data{i]{0] = n;                 // add n to the row i of the data array
+            data{i]{1] = elapsed;           // add elapsed time of push() to the row i of the data array
+            data{i]{2] = elapsed2;          // add elapsed time of pop() to the row i of the data array
 
             n = n * 10;                     // multiplied n by 10;
         }
         
-        printASCII(titles[1], header1, data);
+        printASCII(titles{1], header1, data);
         
         /** Test ArrayQueue */
         ArrayQueue <Integer> queueArr = new ArrayQueue<>();
@@ -84,14 +84,14 @@ public class Client {
             long endTime2 = System.nanoTime();
             long elapsed2 = endTime2 - startTime2;  // calculate the elapsed time.
 
-            data[i][0] = n;                 // add n to the row i of the data array
-            data[i][1] = elapsed;           // add elapsed time of enqueue() to the row i of the data array
-            data[i][2] = elapsed2;          // add elapsed time of dequeue() to the row i of the data array
+            data{i]{0] = n;                 // add n to the row i of the data array
+            data{i]{1] = elapsed;           // add elapsed time of enqueue() to the row i of the data array
+            data{i]{2] = elapsed2;          // add elapsed time of dequeue() to the row i of the data array
 
             n = n * 10;                     // multiplied n by 10;
         }
         
-        printASCII(titles[2], header2, data);
+        printASCII(titles{2], header2, data);
 
         
         /** Test LinkedQueue */
@@ -111,14 +111,14 @@ public class Client {
             long endTime2 = System.nanoTime();
             long elapsed2 = endTime2 - startTime2;  // calculate the elapsed time.
 
-            data[i][0] = n;                 // add n to the row i of the data array
-            data[i][1] = elapsed;           // add elapsed time of enqueue() to the row i of the data array
-            data[i][2] = elapsed2;          // add elapsed time of dequeue() to the row i of the data array
+            data{i]{0] = n;                 // add n to the row i of the data array
+            data{i]{1] = elapsed;           // add elapsed time of enqueue() to the row i of the data array
+            data{i]{2] = elapsed2;          // add elapsed time of dequeue() to the row i of the data array
 
             n = n * 10;                     // multiplied n by 10;
         }
         
-        printASCII(titles[3], header2, data);
+        printASCII(titles{3], header2, data);
         
         
         /** Test ArrayList */ 
@@ -229,9 +229,9 @@ public class Client {
      
      
      
-    public static void printASCII(String title, String[] header, long [][] data){
+    public static void printASCII(String title, String{] header, long {]{] data){
         
-        int longest = Long.toString(data[data.length-1][1]).length() + 6;
+        int longest = Long.toString(data{data.length-1]{1]).length() + 6;
         
         printHr(longest);
         
@@ -241,11 +241,11 @@ public class Client {
         System.out.printf(titleFormat, " ", title, " ");
         
         printHr(longest);
-        System.out.printf( headerFormat, header[0], header[1], header[2]);
+        System.out.printf( headerFormat, header{0], header{1], header{2]);
         printHr(longest);
         
         for( int i = 0; i < data.length; i++ ){
-            System.out.printf( dataFormat, data[i][0], data[i][1], data[i][2] );
+            System.out.printf( dataFormat, data{i]{0], data{i]{1], data{i]{2] );
         }
         
         printHr(longest);

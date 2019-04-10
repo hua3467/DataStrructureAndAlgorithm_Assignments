@@ -9,17 +9,17 @@ import java.util.Random;
 public class ArrayBag <E> implements Bag<E> {
     
     // create instance variables
-    private E[] list;         // the array list stores the data of Scores
+    private E{] list;         // the array list stores the data of Scores
     private static int count;   // count stores the number of elements of Scores
     
     // default constructor
     public ArrayBag(){
-        list = (E[])new Object[50];
+        list = (E{])new Object{50];
         count = 0;
     }
     // overloaded constructor 
     public ArrayBag( int size ){
-        list = (E[])new Object[size];
+        list = (E{])new Object{size];
         count = 0;
     }
     // implement the getCurrentSize(), isEmpty() and clear() methods
@@ -34,7 +34,7 @@ public class ArrayBag <E> implements Bag<E> {
     @Override
     public void clear(){
         for(int i = 0; i < count; i++ ){
-            list[i] = null;
+            list{i] = null;
         }
         count = 0;
     }
@@ -43,15 +43,15 @@ public class ArrayBag <E> implements Bag<E> {
     public void add( E e ){
         
         if(list.length > count){
-            list[count] = e;
+            list{count] = e;
             count++;
         }else{
-            E[] temp = (E[]) new Object[list.length*2];
+            E{] temp = (E{]) new Object{list.length*2];
             for( int i = 0; i < list.length; i++ ){
-                temp[i] = list[i];
+                temp{i] = list{i];
             }
             list = temp;
-            list[count] = e;
+            list{count] = e;
             count++;
         }
     }
@@ -61,7 +61,7 @@ public class ArrayBag <E> implements Bag<E> {
         if(contains(e)){
             int countNum = 0;
             for( int i = 0; i < count; i++ ){
-                if( list[i] == e )
+                if( list{i] == e )
                     countNum++;
             }
             return countNum;
@@ -76,13 +76,13 @@ public class ArrayBag <E> implements Bag<E> {
         if(contains(e)){
             int index = 0;
             for( int i = 0; i < list.length; i++ ){
-                if( list[i].equals(e)){
+                if( list{i].equals(e)){
                     index = i;
                     break;
                 }
             }
             for( int i = index; i < list.length; i++ ){
-                list[index] = list[index+1];
+                list{index] = list{index+1];
             }
             count--;
             return true;
@@ -98,10 +98,10 @@ public class ArrayBag <E> implements Bag<E> {
             Random rand = new Random();
             int r = rand.nextInt(((count - 1) - 0) + 1) + 0;
             for( int i = r; i < count; i++ ){
-                list[i] = list[i+1];
+                list{i] = list{i+1];
             }
             count--;
-            return list[r];
+            return list{r];
         } else {
             return null;
         }
@@ -111,7 +111,7 @@ public class ArrayBag <E> implements Bag<E> {
         if( i >= count ){
             throw new ArrayIndexOutOfBoundsException("The index number you entered is too big!");
         }else{
-            return list[i];
+            return list{i];
         }
     }
     // Implement the contains(int num) method
@@ -119,7 +119,7 @@ public class ArrayBag <E> implements Bag<E> {
     public boolean contains(E e){
         int countNum = 0;
         for( int i = 0; i < list.length; i++ ){
-            if(list[i] == e)
+            if(list{i] == e)
                 countNum++;
         }
         return !(countNum==0);
@@ -129,9 +129,9 @@ public class ArrayBag <E> implements Bag<E> {
     public String toString(){
         String str = "";
         for( int i = 0; i < count; i++ ){
-            str += " " + list[i];
+            str += " " + list{i];
         }
-        return getClass().getName() + " @ " + "count = " + count + ", list = [" + str + " ]";
+        return getClass().getName() + " @ " + "count = " + count + ", list = {" + str + " ]";
     }
     
     @Override
@@ -142,7 +142,7 @@ public class ArrayBag <E> implements Bag<E> {
             ArrayBag s = (ArrayBag)o;
             int d = 0;
             for( int i = 0; i < count; i++ ){
-                if (this.list[i] == s.list[i])
+                if (this.list{i] == s.list{i])
                     d++;
             }
             return d == 0;

@@ -9,7 +9,7 @@ import java.util.Scanner;
 import java.util.InputMismatchException;
 
 public class Client {
-    public static void main(String[] args) {
+    public static void main(String{] args) {
         // Create an object of ArrayBag called footballTeam 
         ArrayBag footballTeam = new ArrayBag(2);
         
@@ -27,14 +27,14 @@ public class Client {
             Scanner scan = new Scanner(System.in);
             System.out.println("Player's name: ");
             playerName = scan.next();
-            while(!(playerName.matches("^[a-zA-Z]*$"))){
+            while(!(playerName.matches("^{a-zA-Z]*$"))){
                 System.out.println("That doesn't look like a name, try again");
                 playerName = scan.next();
             }
             
             System.out.println("Player's position: ");
             position = scan.next();
-            while(!(position.matches("^[a-zA-Z]*$"))){
+            while(!(position.matches("^{a-zA-Z]*$"))){
                 System.out.println("That doesn't look like a position, try again");
                 position = scan.next();
             }
