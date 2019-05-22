@@ -1,14 +1,14 @@
 /** Implementation of the queue ADT using a fixed-length array. */
 public class ArrayQueue <E> implements Queue<E> {
     // instance variables
-    private E{] data;           // generic array used for storage
+    private E[] data;           // generic array used for storage
     private int f = 0;          // index of the front element
     private int sz = 0;         // current number of elements
     public static final int CAPACITY = 100;
     // constructors
     public ArrayQueue(){this(CAPACITY);}    // constructs queue with default capacity
     public ArrayQueue(int capacity){
-        data = (E{]) new Object{capacity];  // safe cast; compiler may give warning
+        data = (E[]) new Object[capacity];  // safe cast; compiler may give warning
     }
     
     // methods
@@ -21,29 +21,29 @@ public class ArrayQueue <E> implements Queue<E> {
     /** Inserts an element at the rear of the queue. */
     public void enqueue(E e) throws IllegalStateException{
         if( sz == data.length ) {
-            E{] temp = (E{]) new Object{data.length * 2];
+            E[] temp = (E[]) new Object[data.length * 2];
             for( int i = 0; i < data.length; i++ ){
-                temp{i] = data{i];
+                temp[i] = data[i];
             }
             data = temp;
             temp = null;
         };
         int avail = (f + sz) % data.length;       // use modular arithmetic
-        data{avail] = e;
+        data[avail] = e;
         sz++;
     }
     
     /** Returns, but does not remove, the first element of the queue (null if empty). */
     public E first(){
         if(isEmpty()) return null;
-        return data{f];
+        return data[f];
     }
     
     /** Removes and returns the first element of the queue (null if empty). */
     public E dequeue(){
         if(isEmpty()) return null;
-        E answer = data{f];
-        data{f] = null;         // dereference to help garbage collection
+        E answer = data[f];
+        data[f] = null;         // dereference to help garbage collection
         f = (f + 1) % data.length;
         sz--;
         return answer;

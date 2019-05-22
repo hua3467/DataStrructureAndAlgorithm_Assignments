@@ -8,12 +8,12 @@
 public class ArrayList<E> implements List<E> {
     // instance variables
     public static final int CAPACITY = 16;      // default array capacity
-    private E{] data;                           // generic array used for storage
+    private E[] data;                           // generic array used for storage
     private int size = 0;                       // current number of elements
     // constructors
     public ArrayList(){ this(CAPACITY);}        // constructs list with default capacity
     public ArrayList(int capacity){             // constructs list with given capacity
-        data = (E{]) new Object{capacity];      // safe cast; compiler may give warning
+        data = (E[]) new Object[capacity];      // safe cast; compiler may give warning
     }
     // public methods
     /** Returns the number of elements in the array list. */
@@ -23,13 +23,13 @@ public class ArrayList<E> implements List<E> {
     /** Returns(but do not remove)the element at index i */
     public E get(int i) throws IndexOutOfBoundsException{
         checkIndex(i, size);
-        return data{i];
+        return data[i];
     }
     /** Replaces the element at index i with e, and returns the replaced element. */
     public E set(int i, E e) throws IndexOutOfBoundsException{
         checkIndex(i, size);
-        E temp = data{i];
-        data{i] = e;
+        E temp = data[i];
+        data[i] = e;
         return temp;
     }
     /** Inserts the element at index i with e, shifting all subsequent elements later.. */
@@ -38,17 +38,17 @@ public class ArrayList<E> implements List<E> {
         if(size == data.length)             // not enough capacity
             resize(2 * data.length);
         for(int k = size - 1; k >= i; k--)  // start by shifting rightmost
-            data{k + 1] = data{k];
-        data{i] = e;                        // ready to place the new element
+            data[k + 1] = data[k];
+        data[i] = e;                        // ready to place the new element
         size++;
     }
     /** Remove / returns the element at index i, shifting subsequent elements earlier. */
     public E remove(int i) throws IndexOutOfBoundsException {
         checkIndex(i, size);
-        E temp = data{i];
+        E temp = data[i];
         for( int k = i; k < size - 1; k++ ) //shift elements to fill holl
-            data{k] = data{k+1];
-        data{size - 1] = null;              // help garbage collection
+            data[k] = data[k+1];
+        data[size - 1] = null;              // help garbage collection
         size --;
         return temp;
     }
@@ -61,9 +61,9 @@ public class ArrayList<E> implements List<E> {
     
     /** Resizes internal array to have given capacity >= size. */
     protected void resize(int capacity){
-        E{] temp = (E{]) new Object{capacity];
+        E[] temp = (E[]) new Object[capacity];
         for( int k = 0; k < size; k++)
-            temp{k] = data{k];
+            temp[k] = data[k];
         data = temp;
     }
     
@@ -72,9 +72,9 @@ public class ArrayList<E> implements List<E> {
         String str = "";
         for( int i = 0; i < size; i++ ){
             if(i<size-1)
-                str += data{i] + ",";
+                str += data[i] + ",";
             else
-                str += data{i];
+                str += data[i];
         }
         return "(" + str + ")";
     }
